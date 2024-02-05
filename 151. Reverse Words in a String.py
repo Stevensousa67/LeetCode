@@ -27,3 +27,7 @@ Constraints:
 s contains English letters (upper-case and lower-case), digits, and spaces ' '.
 There is at least one word in s.
 """
+class Solution:
+    def reverseWords(self, s: str) -> str:
+        s = s.split()
+        return " ".join(s[::-1])
