@@ -20,3 +20,24 @@ Constraints:
 2 <= nums.length <= 105
 -30 <= nums[i] <= 30
 The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer."""
+
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        answer = []
+        previous = 1
+        left = [1]
+        right = [1]
+        for value in range(len(nums)-1):
+            product = previous * nums[value]
+            previous = product
+            left.append(previous)
+        previous = 1
+        nums = nums[::-1]
+        for value in range(len(nums)-1):
+            product = previous * nums[value]
+            previous = product
+            right.append(product)
+        right= right[::-1]
+        for x,y in zip(left, right):
+            answer.append(x*y)
+        return answer
